@@ -1,25 +1,40 @@
-# Portas Lógicas - Projeto 1 Nand to Tetris - Lógica Booleana
-Este repositório contém 15 implementações de portas lógicas fundamentais para construção de hardware utilizando a porta *`NAND`* como porta primária.
+<a name="topo"></a> 
+# 🧮 Nand to Tetris: Construindo um computador a partir do NAND
+Este repositório documenta minha jornada através do projeto Nand2Tetris, que tem como objetivo utilizar a porta *`NAND`* como porta primitiva e, gradativamente, construir portas lógicas mais complexas até compor um computador com hardware e software funcionais.
 
-## 🚀 Descrição do projeto
-A ideia é utilizar a porta *`NAND`* como porta primitiva e a partir dela, gradativamente, construir portas lógicas mais complexas que compõem um computador.
+## 🚀 Progresso dos módulos
+- [x] **Projeto 1** - *Lógica booleana*
+- [x] **Projeto 2** - *Aritmética booleana*
+- [ ] **Projeto 3** - *Memória*
+- [ ] **Projeto 4** - *Linguagem de máquina*
+- [ ] **Projeto 5** - *Arquitetura computacional*
+- [ ] **Projeto 6** - *Assembler*
 
-A partir da porata *`NAND`*, foram desenvolvidas as abstrações necessárias para criação de chips de lógica computacional, seletores(Mux e DMux) e processamento de 16 bits 
+[![Status P1](https://img.shields.io/badge/Projeto%201-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_01)
+[![Status P2](https://img.shields.io/badge/Projeto%202-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_02)
+[![Status P3](https://img.shields.io/badge/Projeto%203-Em%20andamento-6F42C1?style=flat-square&labelColor=343A40)]()
+[![Status P4](https://img.shields.io/badge/Projeto%204-N%C3%A3o%20Iniciado-007ACC?style=flat-square&labelColor=343A40)]()
+[![Status P5](https://img.shields.io/badge/Projeto%205-N%C3%A3o%20Iniciado-005A9E?style=flat-square&labelColor=343A40)]()
+[![Status P6](https://img.shields.io/badge/Projeto%206-N%C3%A3o%20Iniciado-005A9E?style=flat-square&labelColor=343A40)]()
+## 📦 Projeto 1 - Portas Lógicas
+A partir da porata *`NAND`*, foram desenvolvidas as abstrações necessárias para criação de chips de lógica computacional, seletores e processamento de 16 bits, implementadas por 15 portas lógicas fundamentais dentro de um hardware. 
+
+*Os arquivos `.hdl` das portas lógicas estão dispostos na pasta de [Portas Lógicas](./projeto_01), assim como um ***arquivo .ZIP*** com todas as portas compactadas.*
 
 ### 🧰 Portas Implementadas
 | Categoria | Chips |
-| :--- | :---: |
+| :---: | :---: |
 | **Básicas** | `Not`, `And`, `Or`, `Xor` |
 | **Seletores** | `Mux`, `DMux` |
 | **Barramentos (16-bit)** | `Not16`, `And16`, `Or16`, `Mux16` |
 | **Multi-vias** | `Or8Way`, `Mux4Way16`, `Mux8Way16`, `DMux4Way`, `DMux8Way` |
 
-## Conceitos Importantes
-- Lógica Booleana
+### 📘 Conceitos Importantes
+- **Lógica Booleana**
   
-  Sistema algébrico binário que utiliza somente **`0 e 1`** para representar valores e diferente da aritmética, utiliza *AND*, *OR* e *NOT* como operadores. Chamados de **Operadores lógicos**.
+  Sistema algébrico binário que utiliza somente **`0 e 1`** para representar valores que diferente da aritmética, utiliza *AND*, *OR* e *NOT* como operadores, chamados de **Operadores lógicos**.
 
-- Abstração
+- **Abstração**
 
   Processo de descrição de problemas grandes e complexos em problemas menores e mais simples. De modo prático, vai descrever da forma simples, utilizando chips pequenos, o comportamento de um chip maior.
 
@@ -27,12 +42,33 @@ A partir da porata *`NAND`*, foram desenvolvidas as abstrações necessárias pa
 
   Código escrito da abstração do problema. Descreve como o chip vai se comportar e como vai fazer o que foi criado para fazer.
 
-- `HDL`
+- **`HDL`**
 
   (*Hardware Definition Language*) É a linguagem de definição de Hardware. A sintaxe usada para implementar os chips e interconectar seus pinos.
 
+[***↑ VOLTAR AO TOPO***](#topo)
+
+## 📦 Projeto 2 - Aritmética booleana
+A partir das portas construídas no projeto 1 é possível construir operadores aritméticos utilizando bits. Nesse projeto 2 foram implementados somadores aritméticos individuais e um somador de 16 bits, além de um incrementador de 16 bits e uma ULA (Unidade Lógica Aritmética).
+
+*Os arquivos `.hdl` das implementações do projeto 2 estão dispostas na pasta de [Aritmética Booleana](./projeto_02), assim como o **`arquivo .ZIP`** com todas as 5 implementações compactadas.*
+
+### 🧰 **Implementações do Projeto 2**
+  | Tipo | Função |
+  | :--- | :--- |
+  |**HalfAdder** | *Retorna a soma `sum` de 2 bits e um `carry` (conhecido como "vai um" de uma soma)* |
+  | **FullAdder** | *Caluca a soma de 2 bits com o carry. Recebe 3 bits, sendo 2 números e o outro sendo um carry de entrada `carry_in` e retorna a soma `sum` e um carry de saída `carry_out`* |
+  | **Add16** | *Somador que utiliza `FullAdder` encadeados para calcular a soma de 2 bus de 16 bits* |
+  | **Inc16** | *Operador que soma 1 unidade a um barramento de 16 bits de entrada* |
+  | **ULA** | *Unidade Lógica Aritmética, também chamda de ALU (acrônimo em inglês), que opera em 16 bits em notação complemento à 2 e executa uma de 18 funções definidas a partir de um conjunto de funções lógicas e aritméticas pré-definidas sobre 2 valores de entrada e retorna além da saída `out`, 2 valores `zr` para caso a saída seja 0 e `ng` para caso a saída seja um número negativo* |
+
+[***↑ VOLTAR AO TOPO***](#topo)
+
 ## ✅ Como Testar
-  1. Abrir o <a href='https://nand2tetris.github.io/web-ide/chip' >Nand to Tetris </a>
+  1. Abrir o [Nand to Tetris](https://nand2tetris.github.io/web-ide/chip)
+  2. Selecionar o projeto desejado
   3. Carregar o arquivo *`.hdl`* da porta desejada
   4. Carregar o arquivo de testes *`.tst`* correspondente
   5. Executar o script
+
+[***↑ VOLTAR AO TOPO***](#topo)
