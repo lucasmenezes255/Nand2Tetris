@@ -5,7 +5,7 @@ Este repositório documenta minha jornada através do projeto Nand2Tetris, que t
 ## 🚀 Progresso dos módulos
 - [x] **Projeto 1** - *Lógica booleana*
 - [x] **Projeto 2** - *Aritmética booleana*
-- [ ] **Projeto 3** - *Memória*
+- [x] **Projeto 3** - *Memória*
 - [ ] **Projeto 4** - *Linguagem de máquina*
 - [ ] **Projeto 5** - *Arquitetura computacional*
 - [ ] **Projeto 6** - *Assembler*
