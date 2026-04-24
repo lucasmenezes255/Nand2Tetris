@@ -88,11 +88,13 @@ Nesse projeto 3 foram implementados Registrador de 1-bit (BIT), Registrador de 1
 ## **`>_`** Linguagem de Máquina
 Nesse projeto, explorei a linguagem de máquina do computador Hack, tendo contato com a famosa linguagem **Assembly** para construção da lógica de chips e manipulação de dados em memória. Para o projeto 4 foram implementados 2 algoritmos simples. Um **algoritmo algébrico** utilizando somas sucessivas e um **algoritmo interativo** que possui um funcionamento simples onde preenche a tela de preto se uma tecla for pressionada e preenche a tela de branco caso nenhuma tecla for pressionada.
 
+*Os arquivos `.asm` bem como seus scripts de testes e pseudocódigo explicado estão dispostos na pasta de [Linguagem de Máquina](./projeto_04)*
+
 A partir desse módulo, o projeto passa a tratar das instruções que o processador recebe e como ele tratas essas instruções e de onde elas vem.
 
 | RAM | ROM |
 | :-: | :-: |
-| Memória de Acesso Randômico *(Random Acess Memory)*, parte da memória do sistema computacional utilizada para armazenar os dados | Memória Apenas de Leitura *(Read Only Memmory)*, parte na memória do sistema computacional reservada apenas para armazenar as instruções que o processador deve executar. Diferente da RAM, as informações da ROM não podem ser modificadas ou alteradas
+| Memória de Acesso Randômico *(Random Acess Memory)*, parte da memória do sistema computacional utilizada para armazenar os dados | Memória Apenas de Leitura *(Read Only Memmory)*, parte da memória do sistema computacional reservada apenas para armazenar as instruções que o processador deve executar. Diferente da RAM, as informações da ROM não podem ser modificadas ou alteradas
 
 ### Registradores
 - **Registrador Tipo A:** Registrador próximo da CPU capaz de armazenar tanto endereços quanto dados
@@ -116,9 +118,11 @@ A memória do Hack é mapeada da seguinte forma
 - **RAM[16384] -> RAM[24575]:** Espaço de memória reservado para a tela 512x255 *(SCREEN)* 
 - **RAM[24576]:** Espaço de memória reservado para o teclado *(KBD)*. O código das teclas seguem a **Tabela ASCII**
 ### 🔣 Algoritmo Algébrico
-Consiste em realizar uma multiplicação simples de números nos endereços RAM[0] e RAM[1] e armazenar o resultado no endereço RAM[2].
+Consiste em realizar uma multiplicação simples de números nos endereços **RAM[0]** e **RAM[1]** e armazenar o resultado no endereço **RAM[2]**.
+
 $$R2 = R0 * R1$$
-Esse algoritmo pode ser solucionado através de sucessivas somas e em seguida armazenar o resultado no endereço da RAM[2]
+
+Esse algoritmo pode ser solucionado através de sucessivas somas e em seguida armazenar o resultado no endereço da **RAM[2]**
 
 ### 🎨 Algoritmo Interativo
 Consiste uma interação do teclado e da tela do computador processados pela CPU, onde no caso de alguma tecla do teclado estiver pressionada, todos os pixels da tela são pintados na cor **PRETO** e no caso de nenhuma tecla estiver pressionada, os pixels da dela são pintados na cor **BRANCO**. Sendo utilizados **ponteiros** para percorrer os endereços dos pixels da tela.
