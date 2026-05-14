@@ -7,17 +7,17 @@ Este repositório documenta minha jornada através do projeto Nand2Tetris, que t
 - [x] **Projeto 2** - *Aritmética booleana*
 - [x] **Projeto 3** - *Memória*
 - [x] **Projeto 4** - *Linguagem de máquina*
-- [ ] **Projeto 5** - *Arquitetura computacional*
+- [X] **Projeto 5** - *Arquitetura computacional*
 - [ ] **Projeto 6** - *Assembler*
 
 [![Status P1](https://img.shields.io/badge/Projeto%201-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_01)
 [![Status P2](https://img.shields.io/badge/Projeto%202-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_02)
 [![Status P3](https://img.shields.io/badge/Projeto%203-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_03/)  
 [![Status P4](https://img.shields.io/badge/Projeto%204-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_04/4/)
-[![Status P5](https://img.shields.io/badge/Projeto%205-Em%20Andamento-6F42C1?style=flat-square&labelColor=343A40)](#topo)
-[![Status P6](https://img.shields.io/badge/Projeto%206-N%C3%A3o%20Iniciado-007ACC?style=flat-square&labelColor=343A40)](#topo)
+[![Status P5](https://img.shields.io/badge/Projeto%205-Conclu%C3%ADdo-2E7D32?style=flat-square&labelColor=343A40)](./projeto_05/)
+[![Status P6](https://img.shields.io/badge/Projeto%206-Em%20Andamento-6F42C1?style=flat-square&labelColor=343A40)](#topo)
 ## 📦 Projeto 1 - Portas Lógicas
-A partir da porata *`NAND`*, foram desenvolvidas as abstrações necessárias para criação de chips de lógica computacional, seletores e processamento de 16 bits, implementadas por 15 portas lógicas fundamentais dentro de um hardware. 
+A partir da porta *`NAND`*, foram desenvolvidas as abstrações necessárias para criação de chips de lógica computacional, seletores e processamento de 16 bits, implementadas por 15 portas lógicas fundamentais dentro de um hardware. 
 
 *Os arquivos `.hdl` das portas lógicas estão dispostos na pasta de [Portas Lógicas](./projeto_01), assim como um ***arquivo .ZIP*** com todas as portas compactadas.*
 
@@ -38,7 +38,7 @@ A partir da porata *`NAND`*, foram desenvolvidas as abstrações necessárias pa
 
   Processo de descrição de problemas grandes e complexos em problemas menores e mais simples. De modo prático, vai descrever da forma simples, utilizando chips pequenos, o comportamento de um chip maior.
 
-- Implementação
+- **Implementação**
 
   Código escrito da abstração do problema. Descreve como o chip vai se comportar e como vai fazer o que foi criado para fazer.
 
@@ -85,8 +85,8 @@ Nesse projeto 3 foram implementados Registrador de 1-bit (BIT), Registrador de 1
 
 [***↑ VOLTAR AO TOPO***](#topo)
 
-## **`>_`** Linguagem de Máquina
-Nesse projeto, explorei a linguagem de máquina do computador Hack, tendo contato com a famosa linguagem **Assembly** para construção da lógica de chips e manipulação de dados em memória. Para o projeto 4 foram implementados 2 algoritmos simples. Um **algoritmo algébrico** utilizando somas sucessivas e um **algoritmo interativo** que possui um funcionamento simples onde preenche a tela de preto se uma tecla for pressionada e preenche a tela de branco caso nenhuma tecla for pressionada.
+## **`>_`** Projeto 4 - Linguagem de Máquina
+Nesse projeto, explora-se a linguagem de máquina do computador Hack, tendo contato com a famosa linguagem **Assembly** para construção da lógica de chips e manipulação de dados em memória. Para o projeto 4 foram implementados 2 algoritmos simples. Um **algoritmo algébrico** utilizando somas sucessivas e um **algoritmo interativo** que possui um funcionamento simples onde preenche a tela de preto se uma tecla for pressionada e preenche a tela de branco caso nenhuma tecla for pressionada.
 
 *Os arquivos `.asm` bem como seus scripts de testes e pseudocódigo explicado estão dispostos na pasta de [Linguagem de Máquina](./projeto_04)*
 
@@ -107,7 +107,7 @@ A CPU do Hack sabe qual a próxima instrução a ser executada por conta do PC q
 ```
   @value
 ```
-- **Instrução Tipo C:** Computa uma operação $(comp)$, armazena um resultado $(dest)$ e é capaz de saltar para uma instrução no endereço **ROM[A]**
+- **Instrução Tipo C:** Computa uma operação $(comp)$, armazena o resultado em $(dest)$ e é capaz de saltar para uma instrução no endereço **ROM[A]**
 ```
   dest = comp; jump
 ```
@@ -129,6 +129,30 @@ Consiste uma interação do teclado e da tela do computador processados pela CPU
 
 [***↑ VOLTAR AO TOPO***](#topo)
 
+## 🖥️ Projeto 5 - Arquitetura Computacional
+O projeto 5 é o ponto mais alto da construção de Hardware do Nand2Tetris, nesse ponto integra-se todos os chips desenvolvidos anteriormente *(Portas Lógicas, Operadoes Aritméticos e Memórias)* para construção do **Computador Hack** de 16 bits, capaz de executar programas escritos em linguagem de máquina seguindo a **Arquitetura Harvard**, uma variante da Arquitetura de Von Neumann.
+
+Aqui foram implementados 2 componentes vitais para o Computador Hack:
+- `Memory.hdl`: Chip que representa a *memória RAM do Hack*. Como é visto no projeto 4, a memória RAM do Hack é dividida em **memória de dados (16K), Screen (8K) e Keyboard (1)**
+- `CPU.hdl`: Chip da *Unidade Central de Processamento (Central Processing Unit)*. A CPU do Hack é o cérebro responsável por interpretar instruções que recebe da ROM, identificar se a instrução recebida é do **Tipo A** ou do **Tipo C**, gerenciar os registradores A e D, calcular dados através da ULA e controlar o PC que informa a próxima instrução que ela deve executar.
+
+*Os chips `Screen.hdl, Keyboard.hdl, ARegister.hdl, DRegister.hdl, ROM32K.hdl` são chips builtins que são utilizados para a construção da Memory, CPU e Computer.*
+
+*Os arquivos `.hdl` das implementações do projeto 5 estão dispostas na pasta de [Arquitetura Computacional](./projeto_05), assim como o **arquivo .ZIP** com todas as 3 implementações compactadas.*
+
+#### Computador Hack
+É construído no arquivo `Computer.hdl` onde é feita a conexão entre **CPU.hdl, Memory.hdl e ROM32K.hdl** com o *reset* sendo o único valor de entrada.
+
+### Computer Add
+Arquivo hack feito para verificar se o Computador Hack criado é capaz de realizar uma soma
+
+### Computer Max
+Arquivo Hack feito para verificar se o Computador Hack criado é capaz de comparar valores registrados em RAM[0] e RAM[1] e registra o maior em RAM[2].
+
+### Computer Rect
+Arquivo Hack feito para verificar se o Computador Hack criado é capaz de criar um retângulo na tela
+
+[***↑ VOLTAR AO TOPO***](#topo)
 ## ✅ Como Testar
   1. Abrir o [Nand to Tetris](https://nand2tetris.github.io/web-ide/chip)
   2. Selecionar o projeto desejado *(Caso queira testar o Projeto 4, acesse a aba CPU Emulator ou acesse [CPU](https://nand2tetris.github.io/web-ide/cpu))*
